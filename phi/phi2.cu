@@ -21,6 +21,8 @@ extern "C" {
 #include <stdio.h>
 #include <memory.h>
 
+static uint32_t *d_hash[MAX_GPUS];
+
 extern void cubehash512_setBlock_80(int thr_id, uint32_t* endiandata);
 extern void cubehash512_cuda_hash_80(const int thr_id, const uint32_t threads, const uint32_t startNounce, uint32_t *d_hash);
 

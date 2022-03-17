@@ -1,3 +1,5 @@
+# Nested build directory
+build/
 
 ccminer
 *.o

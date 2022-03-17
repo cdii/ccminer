@@ -1,6 +1,8 @@
 #ifndef UINT128_C_H
 #define UINT128_C_H
 
+#include <cstdint>
+
 struct __uint128 {
 	uint64_t Hi;
 	uint64_t Lo;

@@ -31,7 +31,7 @@
 #include <ppl.h>
 using namespace Concurrency;
 #else
-#include <omp.h>
+//#include <omp.h>
 #endif
 
 #include "miner.h"
@@ -67,6 +67,9 @@ using namespace Concurrency;
 class uint32x4_t
 {
 public:
+#if !_RAISE
+	#define _RAISE(x) throw x
+#endif
 #if WIN32
 	void * operator new(size_t size) _THROW1(_STD bad_alloc) { void *p; if ((p = _aligned_malloc(size, 16)) == 0) { static const std::bad_alloc nomem; _RAISE(nomem); } return (p); }
 	void operator delete(void *p) { _aligned_free(p); }

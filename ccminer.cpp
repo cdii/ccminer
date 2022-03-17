@@ -3124,7 +3124,7 @@ static void show_version_and_exit(void)
 		"%s\n",
 		PACKAGE_NAME, PACKAGE_VERSION,
 #ifdef WIN32
-		PTW32_VERSION_STRING,
+		__PTW32_VERSION_STRING,
 #endif
 		curl_version());
 	proper_exit(EXIT_CODE_OK);

@@ -14,13 +14,6 @@
 #include <string.h>
 
 #ifdef _MSC_VER
-#include <emmintrin.h>
-#include <openssl/opensslv.h>
-#if OPENSSL_VERSION_NUMBER < 0x10100000L
-#include "compat/bignum_ssl10.hpp"
-#else
-#include "bignum.hpp"
-#endif
 #include "int128_c.h"
 #else
 #include <x86intrin.h>
@@ -57,7 +50,7 @@ static inline int fls64(uint64_t x)
 	* dest reg is undefined if x==0, but their CPU architect says its
 	* value is written to set it to the same as before.
 	*/
-	register long bitpos = -1;
+	/*register*/ long bitpos = -1;
 	asm("bsrq %1,%0" : "+r" (bitpos) : "rm" (x));
 	return bitpos + 1;
 #endif
