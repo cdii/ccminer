@@ -93,8 +93,6 @@ if(WIN32)
     compat/unistd.h
     compat/winansi.c
     compat/winansi.h
-    crypto/mman.c
-    crypto/mman.h
     deps/nvapi/nvHLSLExtns.h
     deps/nvapi/nvHLSLExtnsInternal.h
     deps/nvapi/nvShaderExtnEnums.h
@@ -113,72 +111,25 @@ endif()
 
 add_executable(${PROJECT_NAME}
   ${ccminer_win32_sources}
-  Algo256/blake256.cu
-  Algo256/blake2s.cu
-  Algo256/bmw.cu
   Algo256/cuda_blake256.cu
-  Algo256/cuda_bmw.cu
-  Algo256/cuda_bmw256.cu
   Algo256/cuda_cubehash256.cu
-  Algo256/cuda_fugue256.cu
   Algo256/cuda_groestl256.cu
   Algo256/cuda_keccak256.cu
-  Algo256/cuda_keccak256_sm3.cu
   Algo256/cuda_skein256.cu
-  Algo256/decred.cu
-  Algo256/keccak256.cu
-  Algo256/vanilla.cu
-  JHA/cuda_jha_compactionTest.cu
-  JHA/cuda_jha_keccak512.cu
-  JHA/jackpotcoin.cu
-  JHA/jha.cu
   algos.h
   api.cpp
   bench.cpp
   bignum.cpp
   bignum.hpp
   bignum_ssl10.hpp
-  blake2b.cu
   ccminer-config.h
   ccminer.cpp
   compat.h
   crc32.c
-  crypto/aesb.cpp
-  crypto/cn_aes.cuh
-  crypto/cn_blake.cuh
-  crypto/cn_groestl.cuh
-  crypto/cn_jh.cuh
-  crypto/cn_keccak.cuh
-  crypto/cn_skein.cuh
-  crypto/cpu/c_keccak.c
-  crypto/cpu/c_keccak.h
-  crypto/cryptolight-core.cu
-  crypto/cryptolight-cpu.cpp
-  crypto/cryptolight.cu
-  crypto/cryptolight.h
-  crypto/cryptonight-core.cu
-  crypto/cryptonight-cpu.cpp
-  crypto/cryptonight-extra.cu
-  crypto/cryptonight.cu
-  crypto/cryptonight.h
-  crypto/int128_c.h
-  crypto/oaes_config.h
-  crypto/oaes_lib.cpp
-  crypto/oaes_lib.h
-  crypto/wildkeccak-cpu.cpp
-  crypto/wildkeccak.cu
-  crypto/wildkeccak.h
-  crypto/xmr-rpc.cpp
-  crypto/xmr-rpc.h
   cuda.cpp
   cuda_checkhash.cu
   cuda_debug.cuh
-  cuda_fugue256.h
-  cuda_groestlcoin.cu
-  cuda_groestlcoin.h
   cuda_helper.h
-  cuda_myriadgroestl.cu
-  cuda_skeincoin.cu
   cuda_vector_uint2x4.h
   cuda_vectors.h
   deps/jansson/dump.c
@@ -200,143 +151,29 @@ add_executable(${PROJECT_NAME}
   deps/jansson/util.h
   deps/jansson/value.c
   elist.h
-  equi/blake2/blake2-config.h
-  equi/blake2/blake2-impl.h
-  equi/blake2/blake2-round.h
-  equi/blake2/blake2.h
-  equi/blake2/blake2b-load-sse2.h
-  equi/blake2/blake2b-load-sse41.h
-  equi/blake2/blake2b-round.h
-  equi/blake2/blake2bx.cpp
-  equi/cuda_equi.cu
-  equi/eqcuda.hpp
-  equi/equi-stratum.cpp
-  equi/equi.cpp
-  equi/equihash.cpp
-  equi/equihash.h
-  fuguecoin.cpp
-  groestlcoin.cpp
   hashlog.cpp
-  heavy/bastion.cu
-  heavy/cuda_bastion.cu
-  heavy/cuda_blake512.cu
-  heavy/cuda_combine.cu
   heavy/cuda_groestl512.cu
   heavy/cuda_hefty1.cu
-  heavy/cuda_keccak512.cu
-  heavy/cuda_sha256.cu
   heavy/heavy.cu
   heavy/heavy.h
   hefty1.c
   hefty1.h
-  lbry/cuda_lbry_merged.cu
-  lbry/cuda_sha256_lbry.cu
-  lbry/cuda_sha512_lbry.cu
-  lbry/lbry.cu
   lyra2/Lyra2.c
   lyra2/Lyra2.h
-  lyra2/Lyra2Z.c
-  lyra2/Lyra2Z.h
   lyra2/Sponge.c
   lyra2/Sponge.h
   lyra2/allium.cu
   lyra2/cuda_lyra2.cu
-  lyra2/cuda_lyra2Z.cu
-  lyra2/cuda_lyra2Z_sm5.cuh
   lyra2/cuda_lyra2_sm2.cuh
   lyra2/cuda_lyra2_sm5.cuh
   lyra2/cuda_lyra2_vectors.h
-  lyra2/cuda_lyra2v2.cu
-  lyra2/cuda_lyra2v2_sm3.cuh
-  lyra2/cuda_lyra2v3.cu
-  lyra2/cuda_lyra2v3_sm3.cuh
-  lyra2/lyra2RE.cu
-  lyra2/lyra2REv2.cu
-  lyra2/lyra2REv3.cu
-  lyra2/lyra2Z.cu
   miner.h
-  myriadgroestl.cpp
-  neoscrypt/cuda_neoscrypt.cu
-  neoscrypt/cuda_vectors.h
-  neoscrypt/neoscrypt-cpu.c
-  neoscrypt/neoscrypt.cpp
-  neoscrypt/neoscrypt.h
   nvapi.cpp
   nvml.cpp
   nvml.h
   nvsettings.cpp
-  pentablake.cu
-  phi/cuda_phi2.cu
-  phi/cuda_phi2_cubehash512.cu
-  phi/phi.cu
-  phi/phi2.cu
-  polytimos.cu
   pools.cpp
-  quark/cuda_bmw512.cu
-  quark/cuda_bmw512_sm3.cuh
-  quark/cuda_jh512.cu
-  quark/cuda_quark.h
-  quark/cuda_quark_blake512.cu
-  quark/cuda_quark_blake512_sp.cuh
-  quark/cuda_quark_compactionTest.cu
-  quark/cuda_quark_groestl512.cu
-  quark/cuda_quark_groestl512_sm2.cuh
-  quark/cuda_quark_keccak512.cu
-  quark/cuda_skein512.cu
-  quark/groestl_functions_quad.h
-  quark/groestl_simple.cuh
-  quark/groestl_transf_quad.h
-  quark/nist5.cu
-  quark/quarkcoin.cu
-  qubit/deep.cu
-  qubit/luffa.cu
-  qubit/qubit.cu
-  qubit/qubit_luffa512.cu
-  scrypt-jane.cpp
-  scrypt.cpp
-  scrypt/blake.cu
-  scrypt/code/scrypt-conf.h
-  scrypt/code/scrypt-jane-chacha.h
-  scrypt/code/scrypt-jane-mix_chacha.h
-  scrypt/code/scrypt-jane-portable-x86.h
-  scrypt/code/scrypt-jane-portable.h
-  scrypt/code/scrypt-jane-romix-basic.h
-  scrypt/code/scrypt-jane-romix-template.h
-  scrypt/fermi_kernel.cu
-  scrypt/fermi_kernel.h
-  scrypt/keccak.cu
-  scrypt/keccak.h
-  scrypt/kepler_kernel.cu
-  scrypt/kepler_kernel.h
-  scrypt/nv_kernel.cu
-  scrypt/nv_kernel.h
-  scrypt/nv_kernel2.cu
-  scrypt/nv_kernel2.h
-  scrypt/salsa_kernel.cu
-  scrypt/salsa_kernel.h
-  scrypt/scrypt-jane.h
-  scrypt/sha256.cu
-  scrypt/sha256.h
-  scrypt/test_kernel.cu
-  scrypt/test_kernel.h
-  scrypt/titan_kernel.cu
-  scrypt/titan_kernel.h
   serialize.hpp
-  sha256/cuda_sha256d.cu
-  sha256/cuda_sha256q.cu
-  sha256/cuda_sha256t.cu
-  sha256/sha256d.cu
-  sha256/sha256q.cu
-  sha256/sha256t.cu
-  sia/sia-rpc.cpp
-  sia/sia-rpc.h
-  sia/sia.cu
-  skein.cu
-  skein2.cpp
-  skunk/cuda_skunk.cu
-  skunk/cuda_skunk_streebog.cu
-  skunk/skein_header.h
-  skunk/skunk.cu
   sph/aes_helper.c
   sph/blake.c
   sph/blake2b.c
@@ -386,64 +223,9 @@ add_executable(${PROJECT_NAME}
   sph/whirlpool.c
   stats.cpp
   sysinfos.cpp
-  tribus/cuda_echo512_aes.cuh
-  tribus/cuda_echo512_final.cu
-  tribus/tribus.cu
   uint256.h
-  util.cpp
-  x11/bitcore.cu
-  x11/c11.cu
-  x11/cuda_streebog.cu
-  x11/cuda_streebog_maxwell.cu
-  x11/cuda_x11.h
-  x11/cuda_x11_aes.cuh
-  x11/cuda_x11_cubehash512.cu
-  x11/cuda_x11_echo.cu
-  x11/cuda_x11_luffa512.cu
-  x11/cuda_x11_luffa512_Cubehash.cu
-  x11/cuda_x11_shavite512.cu
-  x11/cuda_x11_simd512.cu
-  x11/cuda_x11_simd512_func.cuh
-  x11/cuda_x11_simd512_sm2.cuh
-  x11/exosis.cu
-  x11/fresh.cu
-  x11/s3.cu
-  x11/sib.cu
-  x11/streebog_arrays.cuh
-  x11/timetravel.cu
-  x11/veltor.cu
-  x11/x11.cu
-  x11/x11evo.cu
-  x12/x12.cu
-  x13/cuda_hsr_sm3.cu
-  x13/cuda_x13_fugue512.cu
-  x13/cuda_x13_hamsi512.cu
-  x13/hsr.cu
-  x13/sm3.c
-  x13/sm3.h
-  x13/x13.cu
-  x15/cuda_whirlpool_tables.cuh
-  x15/cuda_x14_shabal512.cu
-  x15/cuda_x15_whirlpool.cu
-  x15/cuda_x15_whirlpool_sm3.cu
-  x15/whirlpool.cu
-  x15/x14.cu
-  x15/x15.cu
-  x16/cuda_x16.h
-  x16/cuda_x16_echo512.cu
-  x16/cuda_x16_echo512_64.cu
-  x16/cuda_x16_fugue512.cu
-  x16/cuda_x16_shabal512.cu
-  x16/cuda_x16_simd512_80.cu
-  x16/x16r.cu
-  x16/x16s.cu
-  x17/cuda_x17_haval256.cu
-  x17/cuda_x17_sha512.cu
-  x17/hmq17.cu
-  x17/sonoa.cu
-  x17/x17.cu
-  zr5.cu)
-set_property(TARGET ${PROJECT_NAME} PROPERTY CUDA_ARCHITECTURES 61)
+  util.cpp)
+set_property(TARGET ${PROJECT_NAME} PROPERTY CUDA_ARCHITECTURES 52 53 60 61 62 70 72 75 80 86)
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
     ccminer_compile_options
